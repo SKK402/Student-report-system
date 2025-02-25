@@ -11,9 +11,12 @@ from io import BytesIO
 # Database connection
 def get_data():
     try:
-DATABASE_URL = os.getenv("DATABASE_URL")
-engine = create_engine(DATABASE_URL)
-       
+        DATABASE_URL = os.getenv("DATABASE_URL")
+        if not DATABASE_URL:
+            st.error("DATABASE_URL environment variable is not set.")
+            return pd.DataFrame()
+        
+        engine = create_engine(DATABASE_URL)
         query = """
         SELECT students.student_id, students.name, subjects.name AS subject, marks.marks, marks.max_marks 
         FROM marks 
@@ -29,7 +32,6 @@ engine = create_engine(DATABASE_URL)
             return pd.DataFrame()
         
         return df
-
     except Exception as e:
         st.error(f"Database connection failed: {e}")
         return pd.DataFrame()
