@@ -1,0 +1,5 @@
+at first run student_report.py. then to run main.py do following steps
+1)python -m venv venv
+2)venv\Scripts\activate
+3)requirements.txt
+4)uvicorn main:app --reload

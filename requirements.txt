@@ -1,0 +1,12 @@
+pandas 
+numpy 
+psycopg2 
+matplotlib 
+seaborn 
+streamlit 
+reportlab
+fastapi 
+uvicorn
+scikit-learn
+psycopg2-binary
+sqlalchemy
