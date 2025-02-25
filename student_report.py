@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,9 +11,9 @@ from io import BytesIO
 # Database connection
 def get_data():
     try:
-        # Use SQLAlchemy for better compatibility
-        engine = create_engine("postgresql+psycopg2://postgres:Sk123@localhost:5432/student_report_system")
-        
+DATABASE_URL = os.getenv("DATABASE_URL")
+engine = create_engine(DATABASE_URL)
+       
         query = """
         SELECT students.student_id, students.name, subjects.name AS subject, marks.marks, marks.max_marks 
         FROM marks 
