@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import pandas as pd
 import numpy as np
+import uvicorn
 from sklearn.linear_model import LinearRegression
 from typing import List
 
@@ -17,6 +18,9 @@ class StudentPerformance(BaseModel):
     scores: List[int]
     attendance: float  # Percentage
     participation: float  # Engagement level (0-1 scale)
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 
 # Function to detect learning gaps
 def analyze_performance(scores: List[int]):
